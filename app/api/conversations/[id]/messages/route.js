@@ -239,7 +239,7 @@ export async function POST(req, { params }) {
       data: {
         conversationId,
         role: 'assistant',      // AI 消息
-        content: '',            // ✅ 初始为空字符串
+        content: '',            //  初始为空字符串
         model                   // AI 模型名称
       }
     });

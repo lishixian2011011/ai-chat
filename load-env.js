@@ -45,7 +45,7 @@ if (result.error) {
     process.exit(1);
 }
 
-console.log('✅ 环境变量加载成功');
+console.log(' 环境变量加载成功');
 
 // 验证数据库连接字符串
 if (process.env.DATABASE_URL) {
@@ -53,7 +53,7 @@ if (process.env.DATABASE_URL) {
     console.log('🔗 数据库连接字符串已设置');
     
     if (dbUrl.startsWith('postgresql://')) {
-        console.log('✅ 连接字符串格式正确 (PostgreSQL)');
+        console.log(' 连接字符串格式正确 (PostgreSQL)');
         
         // 解析连接字符串以隐藏密码
         try {
@@ -79,7 +79,7 @@ if (process.env.DATABASE_URL) {
 const importantVars = ['NODE_ENV', 'DATABASE_URL'];
 importantVars.forEach(varName => {
     if (process.env[varName]) {
-        console.log(`✅ ${varName}: 已设置`);
+        console.log(` ${varName}: 已设置`);
     } else {
         console.log(`⚠️  ${varName}: 未设置`);
     }

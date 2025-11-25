@@ -146,7 +146,7 @@ export async function POST(req) {
                   urlPath = imageUrl;
                 }
                 
-                // ✅ 处理 API 路由 URL
+                //  处理 API 路由 URL
                 if (urlPath.includes('/api/files/')) {
                   // /api/files/uploads/images/2025/11/xxx.png
                   // -> uploads/images/2025/11/xxx.png
@@ -179,7 +179,7 @@ export async function POST(req) {
                 else if (ext === '.gif') mimeType = 'image/gif';
                 else if (ext === '.webp') mimeType = 'image/webp';
                 
-                log.debug('✅ 图片转换成功，类型:', mimeType);
+                log.debug(' 图片转换成功，类型:', mimeType);
                 
                 // 返回 Data URL 格式
                 return `data:${mimeType};base64,${base64Image}`;
@@ -214,7 +214,7 @@ export async function POST(req) {
         ];
 
         hasImages = true;
-        log.debug(`✅ 多模态消息构造完成，包含 ${base64Images.length} 张图片`);
+        log.debug(` 多模态消息构造完成，包含 ${base64Images.length} 张图片`);
         
       } catch (imageError) {
         console.error("❌ 图片处理失败:", imageError);
@@ -291,7 +291,7 @@ export async function POST(req) {
           );
           
           if (initSuccess) {
-            log.debug('✅ 已成功发送 aiMessageId 到前端:', aiMessageRecord.id);
+            log.debug(' 已成功发送 aiMessageId 到前端:', aiMessageRecord.id);
           } else {
             console.error('❌ 发送 aiMessageId 失败，流可能已关闭');
             return;
@@ -350,7 +350,7 @@ export async function POST(req) {
                   );
                   if (!success) break;
                   
-                  log.debug('✅ 已发送引用来源到前端');
+                  log.debug(' 已发送引用来源到前端');
                 }
                 
               } catch (parseError) {
@@ -399,7 +399,7 @@ export async function POST(req) {
               },
             });
 
-            log.debug('✅ AI 回复已更新到数据库，包含', searchCitations.length, '个引用来源');
+            log.debug(' AI 回复已更新到数据库，包含', searchCitations.length, '个引用来源');
           }
 
           // 发送结束标记
@@ -454,7 +454,7 @@ export async function POST(req) {
 }
 
 /**
- * ✅ 从 URL 提取域名
+ *  从 URL 提取域名
  * @param {string} url - 完整 URL
  * @returns {string} 域名
  */

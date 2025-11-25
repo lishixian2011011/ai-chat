@@ -9,14 +9,14 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: li2523323
+      POSTGRES_PASSWORD: your password
       POSTGRES_DB: ai_chat
       POSTGRES_INITDB_ARGS: "-E UTF8 --locale=C"
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql  # 改这里，去掉 /data
-    # ✅ 临时注释健康检查
+    #  临时注释健康检查
     # healthcheck:
     #   test: ["CMD-SHELL", "pg_isready -U postgres -d ai_chat"]
     #   interval: 10s
@@ -36,16 +36,16 @@ services:
       - "3000:3000"
     environment:
       # 数据库连接
-      DATABASE_URL: "postgresql://postgres:li2523323@postgres:5432/ai_chat?schema=public&connection_limit=10&pool_timeout=20"
+      DATABASE_URL: "postgresql://postgres:your password@postgres:5432/ai_chat?schema=public&connection_limit=10&pool_timeout=20"
       
       # NextAuth 配置
       NEXTAUTH_URL: "http://localhost:3000"
       NEXTAUTH_SECRET: "koqn/zQ0l55xcFnmNgzq2n4ZuOpCEsJ8c5EokJdlE5A="
       
       # OpenRouter API
-      OPENAI_API_KEY: "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"
+      OPENAI_API_KEY: "Your OPENAI_API_KEY"
       # 博查搜索 API Key
-      BOCHA_API_KEY: "sk-a5a4cb5a769e44b0806b93bca6934c91"
+      BOCHA_API_KEY: "Your BOCHA_API_KEY"
       
       # 应用配置
       NEXT_PUBLIC_APP_URL: "http://localhost:3000"
@@ -54,15 +54,15 @@ services:
       # Prisma 配置
       PRISMA_QUERY_ENGINE_LIBRARY: "/app/node_modules/.prisma/client/libquery_engine-linux-musl-openssl-3.0.x.so.node"
     volumes:
-      # ✅ 关键修改：挂载到宿主机目录，方便调试
+      #  关键修改：挂载到宿主机目录，方便调试
       - ./public/uploads:/app/public/uploads  # 改为相对路径
     depends_on:
-      - postgres  # ✅ 改为简单依赖，不等待健康检查
+      - postgres  #  改为简单依赖，不等待健康检查
     networks:
       - ai-chat-network
-    # ✅ 添加这一行：在启动应用前先运行数据库迁移
+    #  添加这一行：在启动应用前先运行数据库迁移
     command: sh -c "sleep 10 && npx prisma migrate deploy && node server.js"
-    # ✅ 临时注释应用健康检查
+    #  临时注释应用健康检查
     # healthcheck:
     #   test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/test"]
     #   interval: 30s
@@ -73,7 +73,7 @@ services:
 volumes:
   postgres_data:
     driver: local
-  uploads:  # ✅ 添加 uploads volume
+  uploads:  #  添加 uploads volume
     driver: local
 
 networks:

@@ -40,7 +40,7 @@ export async function GET(req, { params }) {
     
     const contentType = contentTypes[ext] || 'application/octet-stream';
     
-    console.log('✅ 返回文件:', filepath, 'Content-Type:', contentType);
+    console.log(' 返回文件:', filepath, 'Content-Type:', contentType);
     
     // 返回文件
     return new NextResponse(file, {

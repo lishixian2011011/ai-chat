@@ -124,7 +124,7 @@ export async function POST(req, { params }) {
     // 6. 配置 AI 模型（使用 gpt-4o-mini）
     // ========================================================================
     const llm = new ChatOpenAI({
-      modelName: 'openai/gpt-4o-mini',  // ✅ 使用便宜的模型（成本低）
+      modelName: 'openai/gpt-4o-mini',  //  使用便宜的模型（成本低）
       openAIApiKey: process.env.OPENAI_API_KEY,
       configuration: {
         baseURL: 'https://openrouter.ai/api/v1',  // OpenRouter API 地址

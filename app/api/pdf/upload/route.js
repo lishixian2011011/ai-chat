@@ -7,7 +7,7 @@
 import { chunkText } from '@/lib/rag/chunking';
 import { embedBatch } from '@/lib/rag/embeddings';
 import { NextResponse } from 'next/server';
-import { auth } from '@/app/api/auth/[...nextauth]/route'; // ✅ 从 NextAuth 路由导入
+import { auth } from '@/app/api/auth/[...nextauth]/route'; //  从 NextAuth 路由导入
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/lib/prisma';
 import { promises as fs } from 'fs';

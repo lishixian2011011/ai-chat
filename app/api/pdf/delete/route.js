@@ -25,7 +25,7 @@ export async function DELETE(req) {
     }
 
     // 解析请求体
-    // ✅ 修复点 1：解析请求体，支持 id 和 pdfId 两种参数名
+    //  修复点 1：解析请求体，支持 id 和 pdfId 两种参数名
     const body = await req.json();
     console.log('📦 请求体:', body);
     

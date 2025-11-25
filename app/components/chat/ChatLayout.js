@@ -130,9 +130,9 @@ const handleSendMessage = async (content, images = [], useWebSearch = false, ski
     if (!useWebSearch) {
       // 普通聊天：前端创建消息占位符（包含用户消息和 AI 消息）
       aiMessageId = await sendMessage(content, images, selectedModel.id, skipUserMessage)
-      log.debug('✅ 普通聊天：前端创建消息占位符，aiMessageId:', aiMessageId)
+      log.debug(' 普通聊天：前端创建消息占位符，aiMessageId:', aiMessageId)
     } else {
-      log.debug('✅ 联网搜索：跳过前端创建 AI 消息，等待后端返回 aiMessageId')
+      log.debug(' 联网搜索：跳过前端创建 AI 消息，等待后端返回 aiMessageId')
       
       // 手动添加用户消息到 UI
       // 原因：联网搜索时不调用 sendMessage，所以需要手动添加用户消息
@@ -145,7 +145,7 @@ const handleSendMessage = async (content, images = [], useWebSearch = false, ski
       }
       
       setMessages(prev => [...prev, tempUserMessage])
-      log.debug('✅ 已添加用户消息到 UI')
+      log.debug(' 已添加用户消息到 UI')
     }
 
     // 创建新的 AbortController
@@ -267,7 +267,7 @@ const handleSendMessage = async (content, images = [], useWebSearch = false, ski
             } else if (data.type === 'citations') {
               //引用来源
               messageCitations = data.citations
-              log.debug('✅ 接收到引用来源:', messageCitations.length, '个')
+              log.debug(' 接收到引用来源:', messageCitations.length, '个')
               
               // 立即更新引用来源到 UI
               // 原因：实时显示引用来源，不需要等到流式结束
@@ -277,7 +277,7 @@ const handleSendMessage = async (content, images = [], useWebSearch = false, ski
                     ? { ...msg, citations: messageCitations }
                     : msg
                 ))
-                log.debug('✅ 已更新引用来源到 UI')
+                log.debug(' 已更新引用来源到 UI')
               } else {
                 console.warn('⚠️ 收到引用来源，但 aiMessageId 为空')
               }
@@ -334,7 +334,7 @@ const handleSendMessage = async (content, images = [], useWebSearch = false, ski
         })
 
         if (saveResponse.ok) {
-          log.debug('✅ 消息保存成功，包含', messageCitations.length, '个引用来源')
+          log.debug(' 消息保存成功，包含', messageCitations.length, '个引用来源')
         } else {
           console.error('❌ 消息保存失败:', await saveResponse.text())
         }
@@ -369,7 +369,7 @@ const handleSendMessage = async (content, images = [], useWebSearch = false, ski
               isWebSearch: useWebSearch
             })
           })
-          log.debug('✅ 已保存部分生成的内容')
+          log.debug(' 已保存部分生成的内容')
         }
       } else {
         throw streamError
@@ -429,7 +429,7 @@ const handleSendMessage = async (content, images = [], useWebSearch = false, ski
           lastUserMessage.content, 
           lastUserMessage.images || [],
           wasWebSearch,// 传递联网搜索标识
-          true // ✅ 新增：跳过用户消息创建
+          true //  新增：跳过用户消息创建
         )
       }, 500)
     }

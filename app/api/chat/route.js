@@ -116,7 +116,7 @@ export async function POST(req) {
                   urlPath = imageUrl;
                 }
                 
-                // ✅ 处理 API 路由 URL
+                //  处理 API 路由 URL
                 if (urlPath.includes('/api/files/')) {
                   // /api/files/uploads/images/2025/11/xxx.png
                   // -> uploads/images/2025/11/xxx.png
@@ -258,9 +258,9 @@ export async function POST(req) {
       const encoder = new TextEncoder();
       const readable = new ReadableStream({
         async start(controller) {
-          let isClosed = false;  // ✅ 添加标志位
+          let isClosed = false;  //  添加标志位
 
-          // ✅ 辅助函数：安全写入数据
+          //  辅助函数：安全写入数据
           const safeEnqueue = (data) => {
             if (isClosed) return false;
             try {
@@ -276,7 +276,7 @@ export async function POST(req) {
             }
           };
 
-          // ✅ 辅助函数：安全关闭流
+          //  辅助函数：安全关闭流
           const safeClose = () => {
             if (isClosed) return;
             try {

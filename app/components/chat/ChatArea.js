@@ -11,7 +11,7 @@
  *   2. 自动滚动到最新消息
  *   3. 空状态提示（无消息时显示欢迎界面）
  *   4. 集成输入区域（发送消息）
- *   5. ✅✅✅ 【新增】：管理联网搜索状态（接收并传递给 InputArea）
+ *   5.  【新增】：管理联网搜索状态（接收并传递给 InputArea）
  * 
  * 组件结构：
  *   ChatArea
@@ -82,7 +82,7 @@ import InputArea from './InputArea'
  * @param {boolean} props.isGenerating - AI 是否正在生成回复
  * @param {Function} props.onStopGeneration - 停止生成回调
  * 
- * ✅✅✅ 【新增】：
+ *  【新增】：
  * @param {boolean} props.isWebSearchEnabled - 联网搜索是否启用
  * @param {Function} props.onToggleWebSearch - 切换联网搜索状态的回调
  * 
@@ -114,7 +114,7 @@ export default function ChatArea({
   currentModel,             // 当前选择的 AI 模型对象
   isGenerating,             // AI 是否正在生成回复
   onStopGeneration,         // 停止生成的回调函数
-  // ✅✅✅ 【新增】：接收联网搜索状态和控制函数
+  //  【新增】：接收联网搜索状态和控制函数
   isWebSearchEnabled,       // 联网搜索是否启用
   onToggleWebSearch         // 切换联网搜索状态的回调函数
 }) {
@@ -213,7 +213,7 @@ export default function ChatArea({
            - 显示当前选择的 AI 模型
            - 用户可以切换模型
         
-        ✅✅✅ 【修改点】：传递联网搜索状态和控制函数
+         【修改点】：传递联网搜索状态和控制函数
            - isWebSearchEnabled：联网搜索是否启用
            - onToggleWebSearch：切换联网搜索状态的回调函数
       */}

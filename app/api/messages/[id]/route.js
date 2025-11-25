@@ -7,12 +7,12 @@
  *   处理单个消息的查询、更新和删除操作
  * 
  * 主要功能：
- *   1. GET：获取单条消息（✅ 新增，包含 citations）
- *   2. PATCH：更新消息内容（✅ 支持更新引用来源和联网搜索标识）
+ *   1. GET：获取单条消息（ 新增，包含 citations）
+ *   2. PATCH：更新消息内容（ 支持更新引用来源和联网搜索标识）
  *   3. DELETE：删除消息
  * 
  * 路由：
- *   - GET /api/messages/:id     ✅ 新增
+ *   - GET /api/messages/:id      新增
  *   - PATCH /api/messages/:id
  *   - DELETE /api/messages/:id
  * 
@@ -33,7 +33,7 @@ import { auth } from '@/app/api/auth/[...nextauth]/route';
 
 /**
  * ============================================================================
- * GET - 获取单条消息（✅ 新增）
+ * GET - 获取单条消息（ 新增）
  * ============================================================================
  * 
  * 功能：
@@ -59,7 +59,7 @@ import { auth } from '@/app/api/auth/[...nextauth]/route';
  *       content: string,
  *       tokensUsed: number,
  *       isWebSearch: boolean,
- *       citations: Array,        // ✅ 引用来源数组
+ *       citations: Array,        //  引用来源数组
  *       createdAt: Date,
  *       updatedAt: Date
  *     }
@@ -122,7 +122,7 @@ export async function GET(req, { params }) {
     }
 
     // ========================================================================
-    // 6. 返回消息数据（✅ 包含 citations）
+    // 6. 返回消息数据（ 包含 citations）
     // ========================================================================
     const responseData = {
       id: message.id,
@@ -131,12 +131,12 @@ export async function GET(req, { params }) {
       content: message.content,
       tokensUsed: message.tokensUsed || 0,
       isWebSearch: message.isWebSearch || false,
-      citations: message.citations || [],  // ✅ 引用来源
+      citations: message.citations || [],  //  引用来源
       createdAt: message.createdAt,
       updatedAt: message.updatedAt
     };
 
-    // ✅ 调试日志（仅开发环境）
+    //  调试日志（仅开发环境）
     if (process.env.NODE_ENV === 'development') {
       console.log(`📥 GET /api/messages/${messageId}:`, {
         role: responseData.role,
@@ -166,15 +166,15 @@ export async function GET(req, { params }) {
  * 
  * 功能：
  *   - 更新指定消息的内容和 token 使用量
- *   - ✅ 支持：更新引用来源（citations）
- *   - ✅ 支持：更新联网搜索标识（isWebSearch）
+ *   -  支持：更新引用来源（citations）
+ *   -  支持：更新联网搜索标识（isWebSearch）
  *   - 主要用于 AI 流式输出完成后，保存完整的回复内容
  * 
  * 使用场景：
  *   1. AI 流式输出时，前端实时显示部分内容
  *   2. 流式输出完成后，调用此接口保存完整内容到数据库
  *   3. 更新 token 使用量（用于计费统计）
- *   4. ✅ 保存联网搜索的引用来源
+ *   4.  保存联网搜索的引用来源
  * 
  * 路由参数：
  *   - id: string  // 消息 ID（从 URL 路径获取）
@@ -183,8 +183,8 @@ export async function GET(req, { params }) {
  *   {
  *     content: string,           // 完整的消息内容
  *     tokensUsed?: number,       // token 使用量（可选）
- *     citations?: Array,         // ✅ 引用来源数组（可选）
- *     isWebSearch?: boolean      // ✅ 是否为联网搜索（可选）
+ *     citations?: Array,         //  引用来源数组（可选）
+ *     isWebSearch?: boolean      //  是否为联网搜索（可选）
  *   }
  * 
  * 响应：
@@ -196,8 +196,8 @@ export async function GET(req, { params }) {
  *       role: 'user' | 'assistant',
  *       content: string,
  *       tokensUsed: number,
- *       citations: Array,        // ✅ 引用来源
- *       isWebSearch: boolean,    // ✅ 联网搜索标识
+ *       citations: Array,        //  引用来源
+ *       isWebSearch: boolean,    //  联网搜索标识
  *       createdAt: Date
  *     }
  *   }
@@ -226,12 +226,12 @@ export async function PATCH(req, { params }) {
     // ========================================================================
     const { id: messageId } = await params;
     
-    // ✅ 解构新增的字段
+    //  解构新增的字段
     const { 
       content, 
       tokensUsed, 
-      citations,      // ✅ 引用来源
-      isWebSearch     // ✅ 联网搜索标识
+      citations,      //  引用来源
+      isWebSearch     //  联网搜索标识
     } = await req.json();
 
     // ========================================================================
@@ -265,7 +265,7 @@ export async function PATCH(req, { params }) {
     }
 
     // ========================================================================
-    // 6. 更新消息内容（✅ 包含新字段）
+    // 6. 更新消息内容（ 包含新字段）
     // ========================================================================
     const updatedMessage = await prisma.message.update({
       where: { id: messageId },
@@ -273,16 +273,16 @@ export async function PATCH(req, { params }) {
         content,
         // 条件更新：只有传入时才更新
         ...(tokensUsed !== undefined && { tokensUsed }),
-        // ✅ 条件更新引用来源
+        //  条件更新引用来源
         ...(citations !== undefined && { citations }),
-        // ✅ 条件更新联网搜索标识
+        //  条件更新联网搜索标识
         ...(isWebSearch !== undefined && { isWebSearch })
       }
     });
 
-    // ✅ 日志记录（仅开发环境）
+    //  日志记录（仅开发环境）
     if (process.env.NODE_ENV === 'development') {
-      console.log(`✅ PATCH /api/messages/${messageId}:`, {
+      console.log(` PATCH /api/messages/${messageId}:`, {
         contentLength: content?.length,
         citationsCount: citations?.length || 0,
         isWebSearch: isWebSearch || false
@@ -314,7 +314,7 @@ export async function PATCH(req, { params }) {
  * 功能：
  *   - 删除指定的消息
  *   - 验证用户权限（只能删除自己会话中的消息）
- *   - ✅ 自动删除关联的引用来源数据（如果 citations 是关联表）
+ *   -  自动删除关联的引用来源数据（如果 citations 是关联表）
  * 
  * 使用场景：
  *   - 用户想删除某条错误的消息
@@ -389,7 +389,7 @@ export async function DELETE(req, { params }) {
       );
     }
 
-    // ✅ 删除前记录日志（仅开发环境）
+    //  删除前记录日志（仅开发环境）
     if (process.env.NODE_ENV === 'development') {
       const citationsCount = message.citations?.length || 0;
       if (citationsCount > 0) {
@@ -398,15 +398,15 @@ export async function DELETE(req, { params }) {
     }
 
     // ========================================================================
-    // 6. 删除消息（✅ 自动删除关联的 citations 数据）
+    // 6. 删除消息（ 自动删除关联的 citations 数据）
     // ========================================================================
     await prisma.message.delete({
       where: { id: messageId }
     });
 
-    // ✅ 日志记录（仅开发环境）
+    //  日志记录（仅开发环境）
     if (process.env.NODE_ENV === 'development') {
-      console.log(`✅ DELETE /api/messages/${messageId}: 消息已删除`);
+      console.log(` DELETE /api/messages/${messageId}: 消息已删除`);
     }
 
     // ========================================================================

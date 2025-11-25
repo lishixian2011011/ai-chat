@@ -23,8 +23,8 @@
  * 
  * ============================================================================
  */
-import { mkdir, writeFile, access } from 'fs/promises'; // ✅ 使用 ES modules
-import { existsSync, statSync } from 'fs';              // ✅ 导入同步方法
+import { mkdir, writeFile, access } from 'fs/promises'; //  使用 ES modules
+import { existsSync, statSync } from 'fs';              //  导入同步方法
 import { join } from 'path';                    // 路径拼接工具
 import { NextResponse } from 'next/server';
 import log from '@/lib/log';
@@ -115,7 +115,7 @@ export async function POST(req) {
       month                    // 月份目录
     );
     // 示例：/path/to/project/public/uploads/images/2024/01
-    // ✅ 调试日志
+    //  调试日志
     log.debug('📁 上传目录:', uploadDir);
     log.debug('📁 当前工作目录:', process.cwd());
     
@@ -128,12 +128,12 @@ export async function POST(req) {
     const filepath = join(uploadDir, filename);  // 完整文件路径
     log.debug('📁 文件路径:', filepath);
     await writeFile(filepath, buffer);           // 写入文件
-    // ✅ 验证文件是否真的保存了（使用同步方法）
+    //  验证文件是否真的保存了（使用同步方法）
     const exists = existsSync(filepath);
-    log.debug('✅ 文件是否存在:', exists);
+    log.debug(' 文件是否存在:', exists);
     
     if (exists) {
-      // ✅ 检查目录权限
+      //  检查目录权限
       const stats = statSync(uploadDir);
       log.debug('📊 目录权限:', stats.mode.toString(8));
       log.debug('📊 文件大小:', statSync(filepath).size, 'bytes');

@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 export default function LoginPage() {
   // 默认的用户名和密码
   const [email, setEmail] = useState('liyu2@qq.com'); // 默认邮箱
-  const [password, setPassword] = useState('li2523323'); // 默认密码
+  const [password, setPassword] = useState('your password'); // 默认密码
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();

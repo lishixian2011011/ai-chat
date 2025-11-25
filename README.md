@@ -380,12 +380,12 @@ docker-compose up -d
 
 ### 🔒 Security Features
 
-- ✅ **Password Encryption**: bcryptjs password hashing (10 rounds of salting)
-- ✅ **JWT Session**: NextAuth.js JWT-based stateless authentication
-- ✅ **CSRF Protection**: Built-in CSRF token verification
-- ✅ **Permission Verification**: All API endpoints verify user identity and resource ownership
-- ✅ **SQL Injection Protection**: Prisma ORM parameterized queries
-- ✅ **XSS Protection**: React auto-escaping + DOMPurify sanitization
+-  **Password Encryption**: bcryptjs password hashing (10 rounds of salting)
+-  **JWT Session**: NextAuth.js JWT-based stateless authentication
+-  **CSRF Protection**: Built-in CSRF token verification
+-  **Permission Verification**: All API endpoints verify user identity and resource ownership
+-  **SQL Injection Protection**: Prisma ORM parameterized queries
+-  **XSS Protection**: React auto-escaping + DOMPurify sanitization
 
 ------
 
@@ -997,12 +997,12 @@ docker-compose up -d
 
 ### 🔒 安全特性
 
-- ✅ **密码加密**：使用 bcryptjs 进行密码哈希（10 轮加盐）
-- ✅ **JWT Session**：NextAuth.js 基于 JWT 的无状态认证
-- ✅ **CSRF 保护**：内置 CSRF Token 验证
-- ✅ **权限验证**：所有 API 接口验证用户身份和资源所有权
-- ✅ **SQL 注入防护**：Prisma ORM 参数化查询
-- ✅ **XSS 防护**：React 自动转义 + DOMPurify 清理
+-  **密码加密**：使用 bcryptjs 进行密码哈希（10 轮加盐）
+-  **JWT Session**：NextAuth.js 基于 JWT 的无状态认证
+-  **CSRF 保护**：内置 CSRF Token 验证
+-  **权限验证**：所有 API 接口验证用户身份和资源所有权
+-  **SQL 注入防护**：Prisma ORM 参数化查询
+-  **XSS 防护**：React 自动转义 + DOMPurify 清理
 
 ------
 

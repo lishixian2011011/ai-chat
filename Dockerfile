@@ -41,13 +41,13 @@ RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
 # ============================================================================
-# ✅ 修复 1：创建上传目录（只设置 /app/public 的权限）
+#  修复 1：创建上传目录（只设置 /app/public 的权限）
 # ============================================================================
 RUN mkdir -p /app/public/uploads/images /app/public/uploads/pdfs && \
     chown -R nextjs:nodejs /app/public
 
 # ============================================================================
-# ✅ 修复 2：复制文件时添加 --chown 参数
+#  修复 2：复制文件时添加 --chown 参数
 # ============================================================================
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
@@ -63,7 +63,7 @@ COPY --from=builder /app/node_modules/@langchain ./node_modules/@langchain
 COPY --from=builder /app/node_modules/langchain ./node_modules/langchain
 
 # ============================================================================
-# ✅ 修复 3：删除错误的 RUN 命令（删除第 66-69 行）
+#  修复 3：删除错误的 RUN 命令（删除第 66-69 行）
 # ============================================================================
 # RUN if [ -d "/tmp/builder/node_modules/@dqbd" ]; then \
 #         mkdir -p ./node_modules/@dqbd && \
@@ -74,7 +74,7 @@ COPY --from=builder /app/node_modules/langchain ./node_modules/langchain
 RUN find ./node_modules -name "*.wasm" -exec chmod 644 {} \; 2>/dev/null || true
 
 # ============================================================================
-# ✅ 修复 4：在复制完所有文件后，统一设置权限
+#  修复 4：在复制完所有文件后，统一设置权限
 # ============================================================================
 RUN chown -R nextjs:nodejs /app
 
