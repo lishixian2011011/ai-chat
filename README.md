@@ -1,9 +1,5 @@
 
 
-------
-
-------
-
 # 📚 AI Chat Assistant
 
 <div align="center">
@@ -380,12 +376,12 @@ docker-compose up -d
 
 ### 🔒 Security Features
 
--  **Password Encryption**: bcryptjs password hashing (10 rounds of salting)
--  **JWT Session**: NextAuth.js JWT-based stateless authentication
--  **CSRF Protection**: Built-in CSRF token verification
--  **Permission Verification**: All API endpoints verify user identity and resource ownership
--  **SQL Injection Protection**: Prisma ORM parameterized queries
--  **XSS Protection**: React auto-escaping + DOMPurify sanitization
+- ✅ **Password Encryption**: bcryptjs password hashing (10 rounds of salting)
+- ✅ **JWT Session**: NextAuth.js JWT-based stateless authentication
+- ✅ **CSRF Protection**: Built-in CSRF token verification
+- ✅ **Permission Verification**: All API endpoints verify user identity and resource ownership
+- ✅ **SQL Injection Protection**: Prisma ORM parameterized queries
+- ✅ **XSS Protection**: React auto-escaping + DOMPurify sanitization
 
 ------
 
@@ -499,12 +495,6 @@ This project is licensed under the MIT License - see [LICENSE](https://monica.im
   - **GitHub**: [@lishixian2011](https://github.com/lishixian2011)
   - **LinkedIn**: [Your Profile](https://linkedin.com/in/yourprofile)
 
-------
-
-<div align="center">
-
-**If this project helps you, please give it a ⭐️ Star!**
-
 
 
 # 📚 AI Chat Assistant - 智能对话助手
@@ -518,8 +508,6 @@ This project is licensed under the MIT License - see [LICENSE](https://monica.im
 [English](#english) | [中文](#chinese)
 
 <a name="chinese"></a>
-
-------
 
 ## 中文版本
 
@@ -997,12 +985,12 @@ docker-compose up -d
 
 ### 🔒 安全特性
 
--  **密码加密**：使用 bcryptjs 进行密码哈希（10 轮加盐）
--  **JWT Session**：NextAuth.js 基于 JWT 的无状态认证
--  **CSRF 保护**：内置 CSRF Token 验证
--  **权限验证**：所有 API 接口验证用户身份和资源所有权
--  **SQL 注入防护**：Prisma ORM 参数化查询
--  **XSS 防护**：React 自动转义 + DOMPurify 清理
+- ✅ **密码加密**：使用 bcryptjs 进行密码哈希（10 轮加盐）
+- ✅ **JWT Session**：NextAuth.js 基于 JWT 的无状态认证
+- ✅ **CSRF 保护**：内置 CSRF Token 验证
+- ✅ **权限验证**：所有 API 接口验证用户身份和资源所有权
+- ✅ **SQL 注入防护**：Prisma ORM 参数化查询
+- ✅ **XSS 防护**：React 自动转义 + DOMPurify 清理
 
 ------
 
@@ -1138,10 +1126,4 @@ npm run test:coverage
   - **邮箱**：[lishixian2011@gmail.com](mailto:your.email@example.com)
   - **GitHub**：[@lishixian2011](https://github.com/lishixian2011)
   - **LinkedIn**：[您的主页](https://linkedin.com/in/yourprofile)
-
-------
-
-<div align="center">
-
-**如果这个项目对你有帮助，请给一个 ⭐️ Star！**
 
